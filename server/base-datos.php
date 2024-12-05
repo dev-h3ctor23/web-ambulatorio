@@ -82,6 +82,4 @@ if ($insertarDatosPath === false) {
     }
 }
 
-// ! Cerrar la conexión a la base de datos.
-$conn->close();
 ?>
