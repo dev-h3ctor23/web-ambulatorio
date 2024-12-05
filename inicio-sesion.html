@@ -1,0 +1,48 @@
+<!-- 
+? Esto permite reutilizar el código de 'base-datos.php' en este archivo.
+! NO TOCAR: Incluye el archivo 'base-datos.php' que se encuentra en el directorio 'server'.
+-->
+<?php
+    include 'server/base-datos.php';
+?>
+<!-- 
+? HTML de Inicio de Sesión 
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 
+    ? Enlaces css y js para el diseño, validaciones y funcionalidades de la página 
+    -->
+    <link rel="stylesheet" href="assets/styles/css-inicio-sesion.css">
+    <script src="client/validaciones-inicio-sesion.js"></script>
+    
+    <title>Inicio de Sesión</title>
+</head>
+<body>
+    <div class="container">
+        <!-- ? Sección del formulario -->
+        <form action="" method="post"> 
+            <!-- * Texto de bienvenida del formulario -->
+            <h2><span>Cuidamos</span> de ti, desde el primer clic.</h2>
+            <!-- * Campo para ingresar el DNI -->
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" name="dni">
+            <span class="error-message" id="dni-error"></span>
+            <!-- * Campo para ingresar la contraseña --> 
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password">
+            <span class="error-message" id="password-error"></span>
+            <!-- * Botón para enviar el formulario -->
+            <span class="general-error-message" id="general-error"></span>
+            <button type="submit">Iniciar Sesión</button>
+            <!-- * Texto para redirigir al usuario a la página de registro -->
+            <p>¿Todavía no tienes una cuenta? <a href="registro.html">Regístrate</a></p>
+        </form>
+        <!-- ? Sección de la imagen -->
+        <div class="image-container"></div>
+    </div>
+</body>
+</html>

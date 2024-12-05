@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fff;
+}
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    height: 80%;
+    background: #ffffff;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Estilos para el formulario */
+form {
+    width: 40%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+form input {
+    font-family: 'Poppins', sans-serif;
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+}
+
+/* Botón */
+form button {
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    padding: 10px;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 4px;
+    margin-top: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #333333;
+}
+
+/* Texto de registro */
+form p {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+form p a {
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+form p a:hover {
+    color: #555555;
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 24.5px;
+}
+h2 span {
+    color: #000000;
+    font-weight: 900;
+}
+
+/* Estilos para la imagen */
+.image-container {
+    width: 50%;
+    background: url('../images/imagen-inicio-sesion.jpg') center center no-repeat;
+    background-size: cover;
+    margin-left: 100px;
+}
+
+/* Estilos para los mensajes de error */
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    margin-top: -5px;
+}
+
+.error-message svg {
+    margin-left: -1px;
+}
+
+/* Estilos para el mensaje de error general */
+.general-error-message {
+    text-align: center;
+    color: red;
+    font-size: 14px;
+    margin-top: 30px;
+    margin-bottom: -20px;
+    display: block;
+}
