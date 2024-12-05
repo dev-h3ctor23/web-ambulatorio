@@ -11,8 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     // ? $sql: Consulta SQL para obtener el tipo de usuario a partir del DNI y la contraseña.
-    
-    $sql = "SELECT tipo_usuario FROM usuario WHERE dni = ? AND contrasena = ?";
+
+    $sql = "SELECT tipo_usuario FROM usuario WHERE dni = ? AND contrasena = ?"; // ! NO TOCAR: Consulta SQL para obtener el tipo de usuario a partir del DNI y la contraseña.
     $stmt = $conn->prepare($sql);
     if ($stmt === false) { // ! Si la preparación de la consulta falla, se muestra un mensaje de error.
         die("Error en la preparación de la consulta: " . $conn->error);
@@ -36,11 +36,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else if ($tipo_usuario == 'paciente') { // ! NO TOCAR: Si el tipo de usuario es paciente, redirigimos a la página del paciente.
             header("Location: ../paciente.html");
         }
+        $conn->close(); // ! Cerrar la conexión aquí
         exit();
-    } else { // * Si el tipo de usuario no es válido, mostramos un mensaje de error.
-        //// Mensaje para comprobar en caso de que se equivoque de usuario o contrasela : echo "DNI o contraseña incorrectos.";
+    } else { // * Si el tipo de usuario no es válido, redirigimos con un mensaje de error.
+        $conn->close(); // ! Cerrar la conexión aquí
+        header("Location: ../inicio-sesion.html?error=1"); // ! Redirigir a la página de inicio de sesión con un mensaje de error.
+        exit();
     }
-
-    $conn->close(); // Cerrar la conexión aquí
 }
 ?>

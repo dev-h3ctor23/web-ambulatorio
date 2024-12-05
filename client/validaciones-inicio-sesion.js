@@ -35,6 +35,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // * blur: al salir del campo DNI o contraseña se activa la validación
     dniInput.addEventListener('blur', validarDNI);
     passwordInput.addEventListener('blur', validarPassword);
+
+    // ! Verificar si hay un parámetro de error en la URL
+    const urlParams = new URLSearchParams(window.location.search); // * Obtener parámetros de la URL
+    if (urlParams.has('error')) { // * Si hay un parámetro 'error' en la URL
+        generalError.textContent = 'DNI o contraseña incorrectos.'; // * Mostrar mensaje de error
+    }
 });
 
 // ? validarDNI(): función para validar campo DNI
