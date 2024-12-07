@@ -1,11 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Médico</title>
+    <link rel="stylesheet" href="assets/styles/css-medico.css">
 </head>
 <body>
-    
+    <div class="container">
+        <!-- Botón de cerrar sesión -->
+        <button id="cerrar-sesion" class="cerrar-sesion">Cerrar Sesión</button>
+
+        <!-- Información del médico -->
+        <section id="info-medico">
+            <h2>Información del Médico</h2>
+            <p id="nombre-medico">Nombre: </p>
+            <p id="correo-medico">Correo: </p>
+            <p id="especialidad-medico">Especialidad: </p>
+        </section>
+
+        <!-- Número de consultas en los próximos 7 días -->
+        <section id="consultas-semana">
+            <h2>Consultas en los Próximos 7 Días</h2>
+            <p id="numero-consultas">Número de Consultas: </p>
+        </section>
+
+        <!-- Consultas de hoy -->
+        <section id="consultas-hoy">
+            <h2>Consultas de Hoy</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID de la Consulta</th>
+                        <th>Paciente</th>
+                        <th>Sintomatología</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-consultas-hoy">
+                    <!-- Las consultas de hoy se cargarán aquí -->
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <script src="client/datos-medico.js"></script>
+    <script>
+        document.getElementById('cerrar-sesion').addEventListener('click', function() {
+            window.location.href = 'inicio-sesion.html';
+        });
+    </script>
 </body>
 </html>

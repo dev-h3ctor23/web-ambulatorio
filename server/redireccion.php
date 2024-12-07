@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($tipo_usuario) { // * Si el tipo de usuario es válido, redirigimos a la página correspondiente.
         if ($tipo_usuario == 'doctor') { // ! NO TOCAR: Si el tipo de usuario es doctor, redirigimos a la página del médico.
-            header("Location: ../medico.html");
+            header("Location: ../medico.html?id=$id_usuario");
         } else if ($tipo_usuario == 'paciente') { // ! NO TOCAR: Si el tipo de usuario es paciente, redirigimos a la página del paciente con el ID del usuario.
             header("Location: ../paciente.html?id=$id_usuario");
         }

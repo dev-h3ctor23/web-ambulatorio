@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS consulta (
   id_doctor INT,
   diagnostico VARCHAR(30),
   sintomas VARCHAR(100),
+  fecha DATE,
   FOREIGN KEY (id_paciente) REFERENCES paciente (id_paciente),
   FOREIGN KEY (id_doctor) REFERENCES doctor (id_doctor)
 );

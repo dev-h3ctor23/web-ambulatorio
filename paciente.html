@@ -8,6 +8,9 @@
 </head>
 <body>
     <div class="container">
+        <!-- Botón de cerrar sesión -->
+        <button id="cerrar-sesion" class="cerrar-sesion">Cerrar Sesión</button>
+
         <!-- Información del paciente -->
         <section id="info-paciente">
             <h2>Información del Paciente</h2>
@@ -94,5 +97,10 @@
     </div>
     <script src="client/datos-paciente.js"></script>
     <script src="client/validaciones-paciente.js"></script>
+    <script>
+        document.getElementById('cerrar-sesion').addEventListener('click', function() {
+            window.location.href = 'inicio-sesion.html';
+        });
+    </script>
 </body>
 </html>
