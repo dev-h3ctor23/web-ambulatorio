@@ -1,11 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Paciente</title>
+    <link rel="stylesheet" href="assets/styles/css-paciente.css">
 </head>
 <body>
-    
+    <div class="container">
+        <!-- Información del paciente -->
+        <section id="info-paciente">
+            <h2>Información del Paciente</h2>
+            <p id="nombre-paciente">Nombre: </p>
+            <p id="correo-paciente">Correo: </p>
+            <p id="dni-paciente">DNI: </p>
+        </section>
+
+        <!-- Próximas Consultas -->
+        <section id="proximas-citas">
+            <h2>Próximas Consultas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID de la Consulta</th>
+                        <th>Médico</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-citas">
+                    <!-- Las citas se cargarán aquí -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Medicación actual -->
+        <section id="medicacion-actual">
+            <h2>Medicación Actual</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Medicamento</th>
+                        <th>Posología</th>
+                        <th>Fecha de Fin</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-medicacion">
+                    <!-- La medicación se cargará aquí -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Consultas pasadas -->
+        <section id="consultas-pasadas">
+            <h2>Consultas Pasadas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID de Consulta</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-consultas">
+                    <!-- Las consultas se cargarán aquí -->
+                </tbody>
+            </table>
+            <div id="detalle-consulta">
+                <!-- Detalle de la consulta seleccionada -->
+            </div>
+        </section>
+
+        <!-- Pedir cita -->
+        <section id="pedir-cita">
+            <h2>Agendar Consulta</h2>
+            <form id="form-pedir-cita">
+                <label for="medico">Médico:</label>
+                <select id="medico" name="medico">
+                    <!-- Los médicos se cargarán aquí -->
+                </select>
+                <span id="medico-error" class="error-message"></span>
+
+                <label for="fecha-cita">Fecha:</label>
+                <input type="date" id="fecha-cita" name="fecha-cita">
+                <span id="mensaje-fecha" class="error-message"></span>
+
+                <label for="sintomas">Sintomatología:</label>
+                <textarea id="sintomas" name="sintomas" rows="4" cols="50"></textarea>
+                <span id="sintomas-error" class="error-message"></span>
+
+                <button type="submit">Pedir Cita</button>
+                <p id="general-error" class="error-message" style="color: red;"></p>
+            </form>
+        </section>
+    </div>
+    <script src="client/datos-paciente.js"></script>
+    <script src="client/validaciones-paciente.js"></script>
 </body>
 </html>
