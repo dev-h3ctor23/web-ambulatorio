@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS doctor_especialidad (
 );
 
 CREATE TABLE IF NOT EXISTS consulta (
-  id_consulta INT PRIMARY KEY,
+  id_consulta INT PRIMARY KEY AUTO_INCREMENT,
   id_paciente INT,
   id_doctor INT,
   diagnostico VARCHAR(30),
@@ -54,4 +54,13 @@ CREATE TABLE IF NOT EXISTS paciente_medicacion (
   cronico TINYINT(1),
   numero_de_dias SMALLINT,
   FOREIGN KEY (id_paciente) REFERENCES paciente (id_paciente)
+);
+
+-- Crear la tabla medico_cabecera
+CREATE TABLE IF NOT EXISTS medico_cabecera (
+  id_paciente INT,
+  id_doctor INT,
+  PRIMARY KEY (id_paciente, id_doctor),
+  FOREIGN KEY (id_paciente) REFERENCES paciente (id_paciente),
+  FOREIGN KEY (id_doctor) REFERENCES doctor (id_doctor)
 );

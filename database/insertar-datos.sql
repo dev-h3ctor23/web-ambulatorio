@@ -68,3 +68,15 @@ INSERT IGNORE INTO doctor_especialidad (id_especialidad, id_doctor) VALUES (2, 7
 INSERT IGNORE INTO doctor_especialidad (id_especialidad, id_doctor) VALUES (5, 8); -- Doctor 8
 INSERT IGNORE INTO doctor_especialidad (id_especialidad, id_doctor) VALUES (3, 9); -- Doctor 9
 INSERT IGNORE INTO doctor_especialidad (id_especialidad, id_doctor) VALUES (5, 10); -- Doctor 10
+
+-- Relación entre pacientes y médicos
+INSERT IGNORE INTO medico_cabecera (id_paciente, id_doctor) VALUES (11, 1); -- Paciente 11 asignado al Doctor 1
+INSERT IGNORE INTO medico_cabecera (id_paciente, id_doctor) VALUES (12, 2); -- Paciente 12 asignado al Doctor 2
+INSERT IGNORE INTO medico_cabecera (id_paciente, id_doctor) VALUES (13, 3); -- Paciente 13 asignado al Doctor 3
+INSERT IGNORE INTO medico_cabecera (id_paciente, id_doctor) VALUES (14, 4); -- Paciente 14 asignado al Doctor 4
+INSERT IGNORE INTO medico_cabecera (id_paciente, id_doctor) VALUES (15, 5); -- Paciente 15 asignado al Doctor 5
+INSERT IGNORE INTO medico_cabecera (id_paciente, id_doctor) VALUES (16, 6); -- Paciente 16 asignado al Doctor 6
+INSERT IGNORE INTO medico_cabecera (id_paciente, id_doctor) VALUES (17, 7); -- Paciente 17 asignado al Doctor 7
+INSERT IGNORE INTO medico_cabecera (id_paciente, id_doctor) VALUES (18, 8); -- Paciente 18 asignado al Doctor 8
+INSERT IGNORE INTO medico_cabecera (id_paciente, id_doctor) VALUES (19, 9); -- Paciente 19 asignado al Doctor 9
+INSERT IGNORE INTO medico_cabecera (id_paciente, id_doctor) VALUES (20, 10); -- Paciente 20 asignado al Doctor 10

@@ -221,6 +221,5 @@ body {
 }
 
 .error-message::before {
-    content: url('path/to/error-icon.png'); /* Asegúrate de que la ruta al icono sea correcta */
     margin-right: 5px;
 }
