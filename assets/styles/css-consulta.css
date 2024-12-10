@@ -1,0 +1,134 @@
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"],
+input[type="date"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #f1f1f1;
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Grid layout */
+section {
+    margin-bottom: 20px;
+}
+
+#info-consulta,
+#info-editable,
+#medicacion,
+#subir-pdf,
+#derivar-especialista {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+#info-consulta p,
+#info-editable label,
+#medicacion label,
+#subir-pdf label,
+#derivar-especialista label {
+    grid-column: span 1;
+}
+
+#info-consulta span,
+#info-editable textarea,
+#medicacion select,
+#medicacion input[type="text"],
+#medicacion input[type="date"],
+#subir-pdf input[type="file"],
+#derivar-especialista select,
+#derivar-especialista input[type="date"] {
+    grid-column: span 1;
+}
+
+#info-editable button,
+#medicacion button,
+#subir-pdf button,
+#derivar-especialista button {
+    grid-column: span 1;
+    justify-self: center;
+}
+
+#lista-medicacion {
+    grid-column: span 1;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-container label {
+    margin-right: 10px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-top: 17px; /* Ajusta este valor según sea necesario */
+}

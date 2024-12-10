@@ -1,11 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="assets/styles/css-consulta.css">
+    <title>Consulta</title>
+    <script src="client/datos-consulta.js" defer></script>
 </head>
 <body>
-    
+    <div class="container">
+        <h1>Consulta Médica</h1>
+        
+        <!-- Información de la consulta -->
+        <section id="info-consulta">
+            <h2>Información de la Consulta</h2>
+            <p id="medico">Médico: <span id="nombre-medico"></span></p>
+            <p id="paciente">Paciente: <span id="nombre-paciente"></span></p>
+            <p id="fecha">Fecha: <span id="fecha-consulta"></span></p>
+        </section>
+
+        <!-- Información editable de la consulta -->
+        <section id="info-editable">
+            <h2>Detalles de la Consulta</h2>
+            <label for="sintomatologia">Sintomatología:</label>
+            <textarea id="sintomatologia" rows="4" cols="50"></textarea>
+
+            <label for="diagnostico">Diagnóstico:</label>
+            <textarea id="diagnostico" rows="4" cols="50"></textarea>
+
+            <button type="button" id="actualizar-consulta">Actualizar Consulta</button>
+        </section>
+
+        <!-- Medicación -->
+        <section id="medicacion">
+            <h2>Medicación</h2>
+            <label for="medicamento">Medicamento:</label>
+            <select id="medicamento">
+                <option value="">Selecciona un medicamento</option>
+                <!-- Opciones de medicamentos -->
+            </select>
+
+            <label for="cantidad">Cantidad:</label>
+            <input type="text" id="cantidad">
+
+            <label for="frecuencia">Frecuencia:</label>
+            <input type="text" id="frecuencia">
+
+            <label for="dias">Número de días:</label>
+            <input type="text" id="dias">
+
+            <div class="checkbox-container">
+                <label for="cronica">Medicación crónica:</label>
+                <input type="checkbox" id="cronica">
+            </div>
+
+            <button type="button" id="anadir-medicacion">Añadir medicación</button>
+
+            <ul id="lista-medicacion">
+                <!-- Lista de medicación añadida -->
+            </ul>
+        </section>
+
+        <!-- Subir PDF -->
+        <section id="subir-pdf">
+            <h2>Subir PDF</h2>
+            <input type="file" id="pdf">
+            <button type="button" id="guardar-pdf">Guardar PDF</button>
+        </section>
+
+        <!-- Derivar a especialista -->
+        <section id="derivar-especialista">
+            <h2>Derivar a Especialista</h2>
+            <label for="especialista">Especialista:</label>
+            <select id="especialista">
+                <option value="">Selecciona un especialista</option>
+                <!-- Opciones de especialistas -->
+            </select>
+
+            <label for="fecha-cita">Fecha de la cita:</label>
+            <input type="date" id="fecha-cita">
+
+            <button type="button" id="pedir-cita">Pedir cita</button>
+        </section>
+    </div>
 </body>
 </html>
