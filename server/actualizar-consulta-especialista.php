@@ -11,16 +11,17 @@ if ($conn->connect_error) {
 }
 
 // * Obtener los datos enviados desde el cliente
-$consultaId = isset($_POST['id']) ? intval($_POST['id']) : 0;
-$diagnostico = isset($_POST['diagnostico']) ? $_POST['diagnostico'] : '';
+$consultaId = isset($_POST['id_consulta']) ? intval($_POST['id_consulta']) : 0;
+$idEspecialista = isset($_POST['id_especialista']) ? intval($_POST['id_especialista']) : 0;
+$fechaCita = isset($_POST['fecha_cita']) ? $_POST['fecha_cita'] : '';
 
-if ($consultaId <= 0 || empty($diagnostico)) {
+if ($consultaId <= 0 || $idEspecialista <= 0 || empty($fechaCita)) {
     echo json_encode(['error' => 'Datos inválidos']);
     exit;
 }
 
 // ? $sql: Consulta SQL para actualizar los datos de la consulta
-$sql = "UPDATE consulta SET diagnostico = ? WHERE id_consulta = ?";
+$sql = "UPDATE consulta SET id_doctor = ?, fecha = ? WHERE id_consulta = ?";
 
 $stmt = $conn->prepare($sql);
 if ($stmt === false) { // ! Si la preparación de la consulta falla, se lanza una excepción
@@ -28,7 +29,7 @@ if ($stmt === false) { // ! Si la preparación de la consulta falla, se lanza un
     exit;
 }
 
-$stmt->bind_param("si", $diagnostico, $consultaId);
+$stmt->bind_param("isi", $idEspecialista, $fechaCita, $consultaId);
 if ($stmt->execute()) {
     // * Devolver un mensaje de éxito en formato JSON
     echo json_encode(['success' => 'Consulta actualizada correctamente']);

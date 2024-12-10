@@ -26,16 +26,44 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Error: ' + error.message);
         });
 
-    // Actualizar la consulta
-    document.getElementById('actualizar-consulta').addEventListener('click', function() {
-        const diagnostico = document.getElementById('diagnostico').value;
+    // Obtener los doctores y llenar el select
+    fetch('server/obtener-doctores.php')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error en la respuesta del servidor');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.error) {
+                console.error(data.error);
+                alert('Error: ' + data.error);
+            } else {
+                const selectEspecialista = document.getElementById('especialista');
+                data.forEach(doctor => {
+                    const option = document.createElement('option');
+                    option.value = doctor.id_doctor;
+                    option.textContent = doctor.nombre_doctor;
+                    selectEspecialista.appendChild(option);
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error: ' + error.message);
+        });
 
-        fetch('server/actualizar-consulta.php', {
+    // Actualizar la consulta con el especialista y la fecha
+    document.getElementById('pedir-cita').addEventListener('click', function() {
+        const idEspecialista = document.getElementById('especialista').value;
+        const fechaCita = document.getElementById('fecha-cita').value;
+
+        fetch('server/actualizar-consulta-especialista.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: `id=${consultaId}&diagnostico=${encodeURIComponent(diagnostico)}`
+            body: `id_consulta=${consultaId}&id_especialista=${idEspecialista}&fecha_cita=${fechaCita}`
         })
         .then(response => response.json())
         .then(data => {

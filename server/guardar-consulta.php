@@ -7,15 +7,15 @@ $password = "";
 $dbname = "ambulatorio";
 
 try {
-    // Crear conexión
+    // * Crear conexión
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Verificar conexión
+    // ? Verificar conexión
     if ($conn->connect_error) {
         throw new Exception("Conexión fallida: " . $conn->connect_error);
     }
 
-    // Obtener los datos del formulario
+    // * Obtener los datos del formulario
     $id_paciente = isset($_POST['id_paciente']) ? intval($_POST['id_paciente']) : 0;
     $id_doctor = isset($_POST['medico']) ? intval($_POST['medico']) : 0;
     $fecha = isset($_POST['fecha-cita']) ? $_POST['fecha-cita'] : '';
@@ -25,11 +25,11 @@ try {
         throw new Exception("Datos del formulario no válidos");
     }
 
-    // Insertar los datos en la tabla consulta
+    // ? $sql: Insertar los datos en la tabla consulta
     $sql = "INSERT INTO consulta (id_paciente, id_doctor, fecha, sintomas) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
 
-    if ($stmt === false) {
+    if ($stmt === false) { // ! Si la preparación de la consulta falla, se lanza una excepción
         throw new Exception("Error en la preparación de la consulta: " . $conn->error);
     }
 
@@ -37,14 +37,19 @@ try {
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
+        // * Devolver un mensaje de éxito en formato JSON
         echo json_encode(["success" => "Consulta guardada correctamente"]);
     } else {
         throw new Exception("Error al guardar la consulta");
     }
 
     $stmt->close();
-    $conn->close();
+    $conn->close(); // ! Cerrar la conexión aquí
 } catch (Exception $e) {
-    echo json_encode(["error" => $e->getMessage()]);
+    // * Manejar excepciones y devolver un mensaje de error en formato JSON
+    echo json_encode(['error' => $e->getMessage()]);
+    if ($conn) {
+        $conn->close(); // ! Cerrar la conexión aquí en caso de error
+    }
 }
 ?>

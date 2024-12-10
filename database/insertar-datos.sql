@@ -80,3 +80,15 @@ INSERT IGNORE INTO medico_cabecera (id_paciente, id_doctor) VALUES (17, 7); -- P
 INSERT IGNORE INTO medico_cabecera (id_paciente, id_doctor) VALUES (18, 8); -- Paciente 18 asignado al Doctor 8
 INSERT IGNORE INTO medico_cabecera (id_paciente, id_doctor) VALUES (19, 9); -- Paciente 19 asignado al Doctor 9
 INSERT IGNORE INTO medico_cabecera (id_paciente, id_doctor) VALUES (20, 10); -- Paciente 20 asignado al Doctor 10
+
+-- Insertar medicamentos
+INSERT IGNORE INTO medicacion (id_medicacion, nombre) VALUES (1, 'Paracetamol');
+INSERT IGNORE INTO medicacion (id_medicacion, nombre) VALUES (2, 'Ibuprofeno');
+INSERT IGNORE INTO medicacion (id_medicacion, nombre) VALUES (3, 'Amoxicilina');
+INSERT IGNORE INTO medicacion (id_medicacion, nombre) VALUES (4, 'Omeprazol');
+INSERT IGNORE INTO medicacion (id_medicacion, nombre) VALUES (5, 'Metformina');
+INSERT IGNORE INTO medicacion (id_medicacion, nombre) VALUES (6, 'Aspirina');
+INSERT IGNORE INTO medicacion (id_medicacion, nombre) VALUES (7, 'Loratadina');
+INSERT IGNORE INTO medicacion (id_medicacion, nombre) VALUES (8, 'Simvastatina');
+INSERT IGNORE INTO medicacion (id_medicacion, nombre) VALUES (9, 'Levotiroxina');
+INSERT IGNORE INTO medicacion (id_medicacion, nombre) VALUES (10, 'Atorvastatina');

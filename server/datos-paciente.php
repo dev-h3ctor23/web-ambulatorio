@@ -6,7 +6,6 @@ header('Content-Type: application/json');
 try { // ! NO TOCAR: Inicio del bloque try-catch
 
     // ? Las variables de conexión a la base de datos deben ser declaradas en este bloque
-
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -15,25 +14,27 @@ try { // ! NO TOCAR: Inicio del bloque try-catch
     // ? Creamos la conexión
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Verificar conexión
+    // ? Verificar conexión
     if ($conn->connect_error) {
         throw new Exception("Conexión fallida: " . $conn->connect_error);
     }
 
+    // * Obtener el ID del paciente desde la URL
     $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
     if ($id <= 0) {
         throw new Exception("ID de paciente no válido");
     }
 
-    // Asegúrate de que los nombres de las columnas coincidan con los nombres reales en la base de datos
+    // ? $sql: Consulta SQL para obtener los datos del paciente
+    // ! Asegúrar de que los nombres de las columnas coincidan 
     $sql = "SELECT p.nombre_paciente AS nombre, p.correo_paciente AS correo, u.dni 
             FROM paciente p 
             JOIN usuario u ON u.id_usuario = u.id_usuario 
             WHERE p.id_paciente = ?";
     $stmt = $conn->prepare($sql);
 
-    if ($stmt === false) {
+    if ($stmt === false) { // ! Si la preparación de la consulta falla, se lanza una excepción
         throw new Exception("Error en la preparación de la consulta: " . $conn->error);
     }
 
@@ -45,12 +46,17 @@ try { // ! NO TOCAR: Inicio del bloque try-catch
         $row = $result->fetch_assoc();
         echo json_encode($row);
     } else {
-        echo json_encode(["error" => "No se encontró el paciente"]);
+        // * Devolver un mensaje de error si no se encuentran datos
+        echo json_encode(['error' => 'No se encontraron datos para el paciente']);
     }
 
     $stmt->close();
-    $conn->close();
+    $conn->close(); // ! Cerrar la conexión aquí
 } catch (Exception $e) {
-    echo json_encode(["error" => $e->getMessage()]);
+    // * Manejar excepciones y devolver un mensaje de error en formato JSON
+    echo json_encode(['error' => $e->getMessage()]);
+    if ($conn) {
+        $conn->close(); // ! Cerrar la conexión aquí en caso de error
+    }
 }
 ?>

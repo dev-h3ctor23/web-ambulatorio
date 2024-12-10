@@ -7,10 +7,10 @@ $password = "";
 $dbname = "ambulatorio";
 
 try {
-    // Crear conexión
+    // * Crear conexión
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Verificar conexión
+    // * Verificar conexión
     if ($conn->connect_error) {
         throw new Exception("Conexión fallida: " . $conn->connect_error);
     }
@@ -21,7 +21,7 @@ try {
         throw new Exception("ID de médico no válido");
     }
 
-    // Obtener información del médico y su especialidad
+    // * Obtener información del médico y su especialidad
     $sql = "SELECT d.nombre_doctor AS nombre, d.correo_doctor AS correo, e.nombre_especialidad AS especialidad 
             FROM doctor d 
             JOIN doctor_especialidad de ON d.id_doctor = de.id_doctor 
@@ -45,8 +45,8 @@ try {
 
     $stmt->close();
 
-    // Obtener número de consultas en los próximos 7 días
-    $sql = "SELECT COUNT(*) AS numero_consultas FROM consulta WHERE id_doctor = ? AND fecha >= CURDATE() AND fecha < DATE_ADD(CURDATE(), INTERVAL 7 DAY)";
+    // ! Obtener número de consultas en los próximos 7 días
+    $sql = "SELECT COUNT(*) AS numero_consultas FROM consulta WHERE id_doctor = ? AND fecha >= CURDATE() AND fecha < DATE_ADD(CURDATE(), INTERVAL 8 DAY)";
     $stmt = $conn->prepare($sql);
 
     if ($stmt === false) {
@@ -65,14 +65,14 @@ try {
 
     $stmt->close();
 
-    // Obtener consultas de hoy
+    // * Obtener consultas de hoy
     $sql = "SELECT c.id_consulta AS id, p.nombre_paciente AS paciente, c.sintomas 
             FROM consulta c 
             JOIN paciente p ON c.id_paciente = p.id_paciente 
             WHERE c.id_doctor = ? AND c.fecha = CURDATE()";
     $stmt = $conn->prepare($sql);
 
-    if ($stmt === false) {
+    if ($stmt === false) { // ! Si la preparación de la consulta falla, se lanza una excepción
         throw new Exception("Error en la preparación de la consulta: " . $conn->error);
     }
 
@@ -80,14 +80,16 @@ try {
     $stmt->execute();
     $result = $stmt->get_result();
 
+    // * Almacenar los resultados en un array
     $consultas_hoy = [];
     while ($row = $result->fetch_assoc()) {
         $consultas_hoy[] = $row;
     }
 
     $stmt->close();
-    $conn->close();
+    $conn->close(); // ! Cerrar la conexión aquí
 
+    // * Devolver los datos del médico y las consultas de hoy en formato JSON
     echo json_encode([
         "nombre" => $medico["nombre"],
         "correo" => $medico["correo"],
@@ -96,6 +98,7 @@ try {
         "consultas_hoy" => $consultas_hoy
     ]);
 } catch (Exception $e) {
+    // * Manejar excepciones y devolver un mensaje de error en formato JSON
     echo json_encode(["error" => $e->getMessage()]);
 }
 ?>

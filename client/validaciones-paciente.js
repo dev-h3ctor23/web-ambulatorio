@@ -55,10 +55,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // * Añadir eventos de validación al perder el foco en los campos
     medicoInput.addEventListener('blur', validarMedico);
     fechaCitaInput.addEventListener('blur', validarFechaCita);
     sintomasInput.addEventListener('blur', validarSintomas);
 
+    // ? Función para validar el campo de médico
     function validarMedico() {
         if (medicoInput.value === '') {
             medicoError.innerHTML = errorSVG + ' Por favor, seleccione un médico.';
@@ -69,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
 
+    // ? Función para validar el campo de fecha de cita
     function validarFechaCita() {
         const fechaCita = new Date(fechaCitaInput.value);
         const hoy = new Date();
@@ -99,11 +102,10 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
 
+    // ? Función para validar el campo de síntomas
     function validarSintomas() {
-        const sintomas = sintomasInput.value.trim();
-
-        if (sintomas === '') {
-            sintomasError.innerHTML = errorSVG + ' El campo de sintomatología no puede estar vacío.';
+        if (sintomasInput.value.trim() === '') {
+            sintomasError.innerHTML = errorSVG + ' Por favor, describa sus síntomas.';
             return false;
         }
 

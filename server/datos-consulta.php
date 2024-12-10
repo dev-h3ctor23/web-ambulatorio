@@ -19,7 +19,7 @@ if ($consultaId <= 0) {
 }
 
 // Consulta SQL para obtener los datos de la consulta
-$sql = "SELECT doctor.nombre_doctor AS nombre_medico, paciente.nombre_paciente AS nombre_paciente, consulta.fecha, consulta.sintomas
+$sql = "SELECT doctor.nombre_doctor AS nombre_medico, paciente.nombre_paciente AS nombre_paciente, consulta.fecha, consulta.sintomas, consulta.diagnostico
         FROM consulta
         JOIN doctor ON consulta.id_doctor = doctor.id_doctor
         JOIN paciente ON consulta.id_paciente = paciente.id_paciente
